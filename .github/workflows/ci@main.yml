@@ -4,6 +4,12 @@ on:
   push:
     # test only
     branches: ['main',"chore/setup-ci"]
+    paths:
+      - 'github/**'
+      - 'idl/**'
+      - 'frontend/**'
+      - 'common/**'
+      - 'rush.json'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
@@ -11,8 +17,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - NodeVersion: 20.14.x
-            NodeVersionDisplayName: 20
+          - NodeVersion: 22.16.0
+            NodeVersionDisplayName: 22
             OS: ubuntu-latest
     name: Node.js v${{ matrix.NodeVersionDisplayName }} (${{ matrix.OS }})
     runs-on: ${{ matrix.OS }}

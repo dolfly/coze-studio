@@ -1,6 +1,12 @@
 name: PR Common Checks
 on:
   pull_request:
+    paths:
+      - 'github/**'
+      - 'idl/**'
+      - 'frontend/**'
+      - 'common/**'
+      - 'rush.json'
     types: [opened, edited, synchronize, reopened]
 
 jobs:
@@ -19,7 +25,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 20.14.x
+          node-version: 22.16.0
 
       - name: Install Dependencies
         run: node common/scripts/install-run-rush.js install
